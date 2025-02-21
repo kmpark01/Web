@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      border: 1px solid black;
+      box-sizing: border-box;
+    }
+    .container{
+      width: 1000px;
+      margin: auto;
+    }
+    .top-menu{
+      width: 1000px;
+      height: 200px;
+      background-color: aqua;
+    }
+    .body-menu{
+      width: 1000px;
+      height: 800px;
+    }
+    .left-menu{
+      float: left;
+      width: 25%;
+      height: 100%;
+      background-color: chocolate;
+    }
+    .right-menu{
+      float: left;
+      width: 75%;
+      height: 100%;
+    }
+    .content{
+      width: 100%;
+      height: 40%;
+      background-color: yellow;
+    }
+    .footer{
+      width: 100%;
+      height: 60%;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-menu">상단메뉴</div>
+    <div class="body-menu">
+      <div class="left-menu">왼쪽메뉴</div>
+      <div class="right-menu">
+        <div class="content">컨텐츠</div>
+        <div class="footer">바닥글</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
