@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#" name="myForm">
+    <table>
+      <tr>
+        <td>성명</td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>이메일</td>
+        <td><input type="email" name="email"></td>
+      </tr>
+      <tr>
+        <td>우편번호</td>
+        <td><input type="text" name="zipCode"></td>
+      </tr>
+      <tr>
+        <td>지역</td>
+        <td>
+          <select name="region">
+            <option value="0">::지역선택::</option>
+            <option value="1">서울</option>
+            <option value="2">경기</option>
+            <option value="3">인천</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2">
+          <input type="button" value="전송" onclick="sendData()">
+        </th>
+      </tr>
+    </table>
+  </form>
+</body>
+<script>
+  /*
+    데이터 검증 조건
+    1. 이름은 필수로 입력 되어야 하며, 2~6자리로 입력한다.
+    2. 이메일은 @를 포함해야 한다.
+      * 첫 글자가 @인지, 마지막 글자가 @인지 확인
+    3. 우편 번호는 5자리 숫자로 입력되어야 한다.
+      * 숫자 확인 : isNaN(값)
+        숫자가 아닌 데이터면 true 리턴
+    4. 지역은 필수로 선택되어야 한다.
+  */
+  function sendData() {
+    let form = document.forms.myForm;
+
+    if (form.name.value.length < 2 || form.name.value.length > 6) {
+      alert("이름은 2~6자리로 입력해야 합니다.");
+      return;
+    }
+
+    if (form.email.value === '') {
+      alert("이메일을 입력하세요.");
+      return;
+    }
+    if (form.email.value.indexOf('@') === -1) {
+      alert("올바른 이메일 주소를 입력하세요. (@ 포함)");
+      return;
+    }
+    if (form.email.value.startsWith('@') || form.email.value.endsWith('@')) {
+      alert("이메일의 첫 글자 또는 마지막 글자로 '@'가 올 수 없습니다.");
+      return;
+    }
+
+    if (form.zipCode.value.length !== 5) {
+      alert("우편번호는 5자리여야 합니다.");
+      return;
+    }
+    if (isNaN(form.zipCode.value)) {
+      alert("우편번호는 숫자로 입력해야 합니다.");
+      return;
+    }
+
+    if (form.region.value === "0") {
+      alert("지역을 선택하세요.");
+      return;
+    }
+
+    form.submit();
+  }
+</script>
+</html>

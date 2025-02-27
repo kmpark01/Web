@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 100px;
+      height: 100px;
+      color: white;
+      background-color: red;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    #text{
+      font-size: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <p id="text">빨</p>
+  </div>
+</body>
+<script>
+  let i = 0;
+  let colors = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+  let contents = ["빨", "주", "노", "초", "파", "남" ,"보"];
+  let box = document.getElementById('box');
+  
+
+  let rainbow = function() {
+    let i = 0; // 반복을 위한 변수 i
+    for (let k = 0; k < colors.length; k++) {
+      setTimeout(function() {
+        box.style.background = colors[k];
+        document.getElementById('text').innerHTML = contents[k];
+      }, k * 1000);
+    }
+
+    setTimeout(function() {
+      rainbow();
+    }, colors.length * 1000);
+  };
+
+  rainbow();
+
+</script>
+</html>
