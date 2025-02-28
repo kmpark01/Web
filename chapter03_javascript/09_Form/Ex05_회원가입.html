@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+        font-family: '맑은 고딕';
+        background-color: white;
+        text-align: center;
+        margin-right: 300px;
+        margin-left: 300px;
+    }
+    
+    .jumin-container,
+    .birth-container {
+        display: flex;
+        align-items: center;
+
+    }
+    
+    .jumin-container input#jumin1,
+    .jumin-container input#jumin2 {
+        width: 30%
+    }
+    
+    .jumin-container input#checkBtn {
+        width: 120px
+    }
+    
+    .birth-container input#year,
+    .birth-container input#month,
+    .birth-container input#day {
+        width: 20%;
+        background-color: gray;
+        font-weight: bold;
+        color: white;
+        text-align: right;
+    }
+    
+    .jumin-container button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+        color: black;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+    
+    th {
+        background: green;
+        color: white;
+        text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea {
+        width: calc(100% - 10px);
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+    
+    .email-container {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+    
+    .email-container input#email,
+    .email-container select#emailSelect{
+      width: 30%;
+    }
+    
+    .email-container select {
+        padding: 8px;
+        
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    button {
+        width: 120px;
+        padding: 10px;
+        background: green;
+        color: white;
+        border: none;
+        ;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background: black;
+    }
+
+    .gender-container,
+    .hobby-container {
+        text-align: left;
+        align-items: center;
+        gap: 10px;
+    }
+    
+
+    textarea {
+        width: 90%;
+        height: 80px;
+        resize: none;
+        text-align: left;
+    }
+    
+  </style>
+</head>
+<body>
+  <form action="#" name="myForm">
+    <div class="container">
+      <h1>회원가입</h1>
+      <table>
+          <tr>
+            <th colspan="2">회원기본정보</th>
+          </tr>
+          <tr>
+            <td>아이디</td>
+            <td><input type="text" placeholder="8~16자 소문자+숫자" id="id"></td>
+          </tr>
+          <tr>
+            <td>비밀번호</td>
+            <td><input type="password" placeholder="8~16자 대문자+소문자+숫자" id="pw"></td>
+          </tr>
+          <tr>
+          </tr>
+          <td>비밀번호 확인</td>
+          <td><input type="password" id="pwConfirm"></td>
+          <tr>
+            <td>이메일</td>
+            <td class="email-container">
+              <input type="text" id="email" placeholder="이메일 입력">@
+              <select id="emailSelect">
+                <option value="">도메인 선택</option>
+                <option value="self">직접 입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="daum.net">daum.net</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>이름</td>
+            <td><input type="text" id="name"></td>
+          </tr>
+          <tr>
+            <th colspan="2">개인정보</th>
+          </tr>
+          <tr>
+            <td>주민등록번호</td>
+            <td class="jumin-container">
+              <input type="text" maxlength="6" id="jumin1"> - 
+              <input type="password" maxlength="7" id="jumin2">
+              예&#41; 123456-1234567
+              <button type="button" onclick="juminCheck()" itemid="checkBtn">확인</button>
+            </td>
+          </tr>
+          <tr>
+            <td>생년월일</td>
+            <td class="birth-container">
+              <input type="text" id="year" disabled>년 
+              <input type="text" id="month" disabled>월 
+              <input type="text" id="day" disabled>일
+            </td>
+          </tr>
+          <tr>
+            <td>성별</td>
+            <td class="gender-container">
+              <label><input type="radio" name="gender" value="male" id="male" disabled> 남</label>
+              <label><input type="radio" name="gender" value="female" id="female" disabled> 여</label>
+            </td>
+          </tr>
+          <tr>
+            <td>관심분야</td>
+            <td class="hobby-container">
+                <label><input type="checkbox" name="hobby" value="travel"> 여행</label>
+                <label><input type="checkbox" name="hobby" value="movie"> 영화</label>
+                <label><input type="checkbox" name="hobby" value="reading"> 독서</label>
+                <label><input type="checkbox" name="hobby" value="music"> 음악</label>
+                <label><input type="checkbox" name="hobby" value="none"> 관심없음</label>
+            </td>
+          </tr>
+          <tr>
+            <td>자기소개</td>
+            <td><textarea placeholder="자기소개를 입력하세요" id="selfIntro"></textarea></td>
+          </tr>
+      </table>
+      <div class="button-container">
+        <button type="button" onclick="validate()">회원가입</button>
+        <button type="button" onclick="resetForm()">다시입력</button>
+      </div>
+    </div>
+  </form>
+</body>
+<script>
+  function validate() {
+    let form = document.forms.myForm;
+    // 회원 가입 버튼 클릭 시 실행하는 함수
+    // 각 데이터 검증을 마친 뒤 submit
+    // 아이디 정규식      
+    let regId = /^[0-9a-z]{8,16}$/;       
+    // 비밀번호 정규식
+    let regPw = /^[0-9a-zA-Z]{8,16}$/;   
+    // 성함 정규식 
+    let regName = /^[가-힣]{2,6}$/;    
+    // 이메일 정규식
+    let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    // 주민등록번호 정규식(앞자리)
+    let regPid1 = /^\d{6}$/;
+    // 주민등록번호 정규식(뒷자리)
+    let regPid2 = /^\d{7}$/;
+
+    let id = document.querySelector('#id');  
+    let pw = document.querySelector('#pw');  
+    let pwConfirm = document.querySelector('#pwConfirm');
+    let name = document.querySelector('#name');  
+    let email1 = document.querySelector('#email');   
+    let emailSelect = document.querySelector('#emailSelect');  
+    let jumin1 = document.querySelector('#jumin1');  
+    let jumin2 = document.querySelector('#jumin2');  
+    let year = document.querySelector('#year');
+    let month = document.querySelector('#month');
+    let day = document.querySelector('#day');
+    
+    // 각 값이 조건에 맞는지 확인
+    if (!regId.test(id.value)) {
+        alert('아이디는 8~16자 소문자+숫자이어야 합니다.');
+        return false;
+    }
+
+    if (!regPw.test(pw.value)) {
+        alert('비밀번호는 8~16자 대문자+소문자+숫자이어야 합니다.');
+        return false;
+    }
+
+    if (pw.value !== pwConfirm.value) {
+        alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+        return false;
+    }
+
+    
+    if (!regEmail.test(email.value + '@' + emailSelect.value)) {
+      alert('올바른 이메일 형식이 아닙니다.');
+      return false;
+    }
+    
+    if (!regName.test(name.value)) {
+        alert('이름은 한글 2~6자이어야 합니다.');
+        return false;
+    }
+
+    if (!regPid1.test(jumin1.value) || !regPid2.test(jumin2.value)) {
+        alert('주민등록번호가 올바르지 않습니다.');
+        return false;
+    }
+
+    alert('회원가입 성공')
+    form.submit();
+}
+
+function juminCheck(){
+  let regPid1 = /^\d{6}$/;
+  let now = new Date().getFullYear().toString().slice(-2);
+
+  if (regPid1.test(jumin1.value)) {
+    
+    let year = jumin1.value.substring(0, 2);
+    let month = jumin1.value.substring(2, 4);
+    let day = jumin1.value.substring(4, 6);
+  
+    if(year <= 99 && year > now){
+      document.querySelector('input[placeholder="YYYY"]').value = 19 + year;
+    }else{
+      document.querySelector('input[placeholder="YYYY"]').value = 20 + year;
+    }
+    if(month > 0 && month < 13){
+      document.querySelector('input[placeholder="MM"]').value = month;
+    }else{
+      alert('잘못된 주민번호 입니다.')
+    }
+    document.querySelector('input[placeholder="DD"]').value = day;
+  } else {
+    alert('주민등록번호 앞자리가 올바르지 않습니다.');
+  }
+
+  if(jumin2.value.charAt(0) == 1 || jumin2.value.charAt(0) == 3){
+      document.querySelector('input[name="gender"][value="male"]').checked = true;
+    }else if(jumin2.value.charAt(0) == 2 || jumin2.value.charAt(0) == 4){
+      document.querySelector('input[name="gender"][value="female"]').checked = true;
+    }else{
+      alert('잘못된 주민번호 입니다.')
+    }
+  }
+
+  function resetForm(){
+    document.forms.myForm.reset();
+  }
+</script>
+</html>

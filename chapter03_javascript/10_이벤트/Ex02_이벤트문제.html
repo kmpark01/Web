@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box">마우스 올리기</div>
+
+  <div id="click">
+    <span>target</span>
+  </div>
+
+  <form action="#">
+    <input type="text">
+    <div id="content"></div>
+  </form>
+
+  <form action="#">
+    <input type="text">
+  </form>
+
+  <h2 id="count">0</h2>
+  <div>
+    <button id="increase">+1</button>
+    <button id="decrease">-1</button>
+  </div>
+</body>
+<script>
+  // 해당 요소에 마우스를 올리면 "안녕하세요"
+  // 마우스가 벗어나면 "안녕히 가세요"로 해당 요소의 내부 값 변경
+
+  let box = document.querySelector('#box');
+  box.addEventListener('mouseover', function(){
+    box.innerHTML = '안녕하세요';
+  });
+
+  box.addEventListener('mouseout', function(){
+    box.innerHTML = '안녕히 가세요';
+  });
+
+  let click = document.querySelector('#click');
+  click.addEventListener('click', (e) => {
+    console.log('target', e.target);
+    console.log('currentTarget', e.currentTarget);
+  });
+
+  // 해당 input에 키보드를 이용하여 값을 입력하면
+  // 입력한 키보드의 키 코드 값을 div 요소 안에 표시
+  // * 키 코드 : event.keyCode
+
+  let content = document.querySelector('#content');
+  let text = document.querySelector('input');
+  text.addEventListener('keydown', function(e){
+    content.innerHTML = e.keyCode;
+  });
+
+  // 위 html 요소를 통해 +1 버튼 클릭 시
+  // count의 값을 1 증가
+  // -1 버튼 클릭 시 count 값을 1 감소 시키는 코드 작성
+
+  let countNum = 0;
+  let count = document.querySelector('#count');
+  let upBtn = document.querySelector('#increase')
+  let downBtn = document.querySelector('#decrease')
+
+  upBtn.addEventListener('click', function(){
+    countNum++;
+    count.innerHTML = countNum;
+  })
+
+  downBtn.addEventListener('click', function(){
+    countNum--;
+    count.innerHTML = countNum;
+  })
+  
+</script>
+</html>

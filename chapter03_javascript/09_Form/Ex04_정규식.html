@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  /*
+    정규식 ( Regular Expressions )
+    - 정규 표현식을 줄여서 정규식이라고 부른다.
+    - 데이터 검증 용도로 사용되며, 특정 패턴을
+     정규식으로 만들고 비교한다.
+    - 만드는 방법
+        1. let re = /ab+c/
+        2. let re = new RegExp('/ab+c/');
+
+    정규식 기본 문법
+    - ^ : 패턴 시작
+    - [0-9] : 괄호 안의 숫자로 범위 지정
+    - + : 문자 수 상관 없음
+    - $ : 패턴 종료
+    - [a-z] : 알파벳 소문자로 범위 지정
+    - [A-Z] : 알파벳 대문자로 범위 지정
+*/
+
+  const regExp = /^[0-9]+$/;
+  const target = 10; // 숫자 데이터 비교
+
+  // 1. 정규식.test(데이터) - boolean 반환
+  if(regExp.test(target)){
+    console.log('숫자가 맞습니다.');
+  }else{
+    console.log('숫자가 아닙니다.');
+  }
+
+  // 2. 정규식.exec(데이터) - 정보를 가지고 있는 배열 반환
+  // 문자열을 못 찾으면 null 반환
+  if(regExp.exec(target)){
+    console.log('숫자가 맞습니다.');
+  }else{
+    console.log('숫자가 아닙니다.');
+  }
+
+  // 3. 문자열.search(정규식) - 인덱스 번호 반환
+  // 문자열에서 사용
+  // 대응되는 문자열을 찾이 못하면 -1 반환
+  if(String(target).search(regExp) != -1){
+    console.log('숫자가 맞습니다.');
+  }else{
+    console.log('숫자가 아닙니다.');
+  }
+
+  // 4. 문자열.match(정규식) - 정보르 가지고있는 배열 반환
+  // 대응되는 문자열을 찾지 못하면 null 반환
+  if(String(target).match(regExp) != null){
+    console.log('숫자가 맞습니다.');
+  }else{
+    console.log('숫자가 아닙니다.');
+  }
+
+
+
+</script>
+</html>
